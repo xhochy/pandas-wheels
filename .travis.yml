@@ -29,31 +29,31 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=2.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.5
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
+    #- os: linux
+    #  env:
+    #    - MB_PYTHON_VERSION=2.7
+    #    - PLAT=i686
+    #- os: linux
+    #  env:
+    #    - MB_PYTHON_VERSION=3.5
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
-    - os: osx
-      language: generic
-      env: MB_PYTHON_VERSION=2.7
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.5
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.6.2
+    #- os: linux
+    #  env:
+    #    - MB_PYTHON_VERSION=3.6
+    #    - PLAT=i686
+    #- os: osx
+    #  language: generic
+    #  env: MB_PYTHON_VERSION=2.7
+    #- os: osx
+    #  language: generic
+    #  env:
+    #    - MB_PYTHON_VERSION=3.5
+    #- os: osx
+    #  language: generic
+    #  env:
+    #    - MB_PYTHON_VERSION=3.6.2
 
 
 before_install:
@@ -77,9 +77,4 @@ script:
     - install_run $PLAT
 
 after_success:
-    # Upload wheels to Rackspace container
-    - pip install wheelhouse-uploader
-    - python -m wheelhouse_uploader upload --local-folder
-          ${TRAVIS_BUILD_DIR}/wheelhouse/
-          --no-update-index
-          $CONTAINER
+    - ls -lha ${TRAVIS_BUILD_DIR}/wheelhouse/
